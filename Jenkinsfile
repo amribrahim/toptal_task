@@ -12,6 +12,13 @@ node("master"){
       	  terraform apply -auto-approve
       	
          ''' }
+        
+    stage("update kube config file"){
+      sh '''
+         aws eks --region us-east-1 update-kubeconfig --name eks
+         '''
+    
+    }
     stage("apply k8s code"){
       sh '''
       	  cd k8s

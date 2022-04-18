@@ -17,6 +17,8 @@ resource "aws_db_instance" "default" {
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
   db_subnet_group_name= aws_db_subnet_group.default.id
+  backup_window      = "00:00-03:00"
+  maintenance_window = "sat:03:01-sat:06:00"
 }
 
 
