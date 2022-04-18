@@ -2,11 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-service
+  annotations:
+      services.beta.kubernetes.io/aws-loadbalancer-type: nlb
+      services.beta.kubernetes.io/aws-loadbalancer-cross-zone-load-balancing-enabled: 'true'
 spec:
   selector:
     name: web
+  type: loadbalancer
   ports:
-  - name: web
-    protocol: TCP
-    port: 3000
-    targetPort: 3000
+    - protocol: TCP
+      port: 3000
+
