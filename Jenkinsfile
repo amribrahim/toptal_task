@@ -12,10 +12,18 @@ node("master"){
       	  terraform apply -auto-approve
       	
          ''' }
-    stage("apply terraform code"){
+    stage("apply k8s code"){
       sh '''
       	  cd k8s
       	  kubectl apply -f .
+      	
+         ''' 
+    }
+    
+    stage("install loki"){
+      sh '''
+      	  chmod +x helm.sh
+      	  ./helm.sh
       	
          ''' 
     } 
