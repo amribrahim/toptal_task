@@ -47,7 +47,7 @@ resource "aws_eks_node_group" "nodes_general" {
   disk_size            = 20
   force_update_version = false
   instance_types       = ["t3.small"]
-  version              = "1.22"
+
 
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
