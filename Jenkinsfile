@@ -19,6 +19,14 @@ node("master"){
          '''
     
     }
+    
+    stage("deploy metric server k8s"){
+      sh '''
+         kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+         '''
+    
+    
+    }
     stage("apply k8s code"){
       sh '''
       	  cd k8s
